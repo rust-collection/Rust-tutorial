@@ -45,5 +45,22 @@ a is 10, b is true
 a is 20, b is true
 ```
 
+还有一种操作成为**阴影操作**，用户还可使用与上一个变量相同的名称声明新变量，这会创建一个新绑定。 在 Rust 中，此操作称为“隐藏”，这是由于新变量会隐藏上一个变量。 旧变量仍存在，但无法再于此范围内引用它。如下所示：
+
+```rust
+fn main() {
+    let number = 5;          // the first binding is created using the name "number"
+    let number = number + 5; // a different binding shadows the name "number"
+    let number = number * 2; // again, a new binding is created
+    println!("The number is: {}", number);
+}
+```
+
+程序输出
+
+```
+The number is: 20
+```
+
 
 
