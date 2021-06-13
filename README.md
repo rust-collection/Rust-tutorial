@@ -16,3 +16,4 @@
 ## 参考
 - [站长](https://mp.weixin.qq.com/s/dUFJMEzOJGwM5YY8cP9MBQ)
 - [微软Rust教程](https://docs.microsoft.com/zh-cn/learn/paths/rust-first-steps/)
+- [Rust编程语言入门教程](https://www.bilibili.com/video/BV1hp4y1k7SV)
