@@ -20,9 +20,10 @@ fn main() {
         i *= 2;
         if i > 100 {
             break i;
-        }
+        };
     };
     assert_eq!(something, 128);
+    println!("{}", something);
 
     let mut counter = 0;
     
@@ -39,5 +40,9 @@ fn main() {
 
     for item in 0..5 {
         println!("{}", item * 2);
-      }
+    }
+
+    for item in (0..5).rev(){
+        println!("{}", item)
+    }
 }
