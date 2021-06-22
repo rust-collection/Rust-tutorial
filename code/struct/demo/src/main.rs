@@ -15,6 +15,6 @@ fn main() {
         length:50,
     };
     println!("{}", area(&rec));
-
+    // 使结构体输出更清晰
     println!("{:#?}", rec)
 }
