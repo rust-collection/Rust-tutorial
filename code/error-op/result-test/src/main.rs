@@ -3,17 +3,23 @@ use std::io;
 use std::io::{ErrorKind, Read};
 
 fn read_username_from_file(path:&str) -> Result<String, io::Error>{
-    let f = File::open(path);
-    let mut f = match f {
-        Ok(file)=>file,
-        Err(e)=>return Err(e),
-    };
+    // let f = File::open(path);
+    // let mut f = match f {
+    //     Ok(file)=>file,
+    //     Err(e)=>return Err(e),
+    // };
+    // 下面这段代码通过？的形式来将错误传递，等同于上面注释的代码
+    let f = File::open(path)?;
 
     let mut s = String::new();
-    match f.read_to_string(&mut s){
-        Ok(_)=>Ok(s),
-        Err(e) => Err(e),
-    }
+    // match f.read_to_string(&mut s){
+    //     Ok(_)=>Ok(s),
+    //     Err(e) => Err(e),
+    // }
+    f.read_to_string(&mut s)?;
+    // 下面这行代码通过链式调用的形式使代码更简洁
+    // File::open("path")?.read_to_string(&mut s)?;
+    Ok(s)
 }
 
 fn main() {
