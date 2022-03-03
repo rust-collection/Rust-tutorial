@@ -19,6 +19,7 @@ fn main() {
     let something = loop {
         i *= 2;
         if i > 100 {
+            // break后接的表达式就是loop的结果，在这个例子中返回给something
             break i;
         };
     };
