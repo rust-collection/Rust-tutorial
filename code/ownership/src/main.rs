@@ -14,7 +14,7 @@ fn main() {
     // println!("{}", s1)
 
     take_ownership(s);
-    // 同样会发生所有权转移的move操作
+    // 同样会发生所有权转移的move操作，下面的语句会报错
     // println!("{}", s);
 
     let x = 5;
@@ -43,10 +43,15 @@ fn main() {
     // 如果使用可以修改的引用方式则可以在函数中对值进行修改
     let mut s1 = String::from("hello");
     // 在特定作用域内只能有一个可变的引用
+    // 或者多个不可变引用
+    // 以上两个条件只能满足一个
     let s2 = &mut s1;
-    let s3 = &mut s1;
-    let len = calculate_length2(&mut s1);
-    println!("The length of '{}' is {}.", string, len);
+    // 此时下方的语句就会报错，因为rust只允许可变变量拥有一个可变引用
+    // 通过这种方式来防止数据竞争，当s2和s3同时对数据发生修改时在其他语言就可能会发生错误
+    // let s3 = &mut s1;
+    let len1 = calculate_length2(s2);
+    // let len2 = calculate_length2(s3);
+    println!("The length of '{}' is {}.", string, len1);
 
     let mut s = String::from("hello world");
     let word = first_word(&s);
@@ -56,10 +61,13 @@ fn main() {
     println!("{}", word);
 }
 
-// 将参数转换为字符串切片会使得函数更加灵活
+// 将参数转换为字符串切片会使得函数更加灵活，可以同时接受字符串与字符串切片 
+// 字符串传递参数的时候直接传递 let word = first_word(&s[..]); 即可
 // fn first_word(s: &str) -> &str{
 fn first_word(s: &String) -> &str{
     let bytes = s.as_bytes();
+    // iter会返回遍历集合中的每个元素
+    // enumrate会将每一个元素添加一个下标并封装为元组进行返回
     for (i, &item) in bytes.iter().enumerate(){
         if item == b' '{
             // 返回字符串的切片
