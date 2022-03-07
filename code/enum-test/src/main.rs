@@ -35,7 +35,7 @@ fn main() {
     // 它包含在预导入模块中，可以直接使用
     // enum Option<T>{
     //     Some<T>,
-    //     Node,
+    //     Non e,
     // }
     let some_number = Some(5);
     let some_string = Some("String");

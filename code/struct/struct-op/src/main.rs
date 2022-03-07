@@ -6,12 +6,19 @@ struc User{
 }
 
 fn build_user(email: String, username:String)->User{
+    let user1 = User{
+        email,
+        username,
+        activate: false,
+        sign_in_count: 10,
+    };
+    //结构体可以作为返回值进行返回
     User{
         // 当参数名与结构体字段名相同时可以使用简化赋值的方式对其进行赋值
         email,
         username,
-        activate: true,
-        sign_in_count: 444,
+        //当新声明的结构体与之前已经声明的结构值相同时，可以使用struct的更新操作
+        ..user1,
     }
 }
 

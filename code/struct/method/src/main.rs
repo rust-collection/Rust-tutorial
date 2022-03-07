@@ -10,12 +10,12 @@ impl Rectangle{
         self.width * self.length
     }
 
-    fn can_hold(&self, other: &Rectangle)->bool{
+    fn can_hold(&self, other: &Rectangle) -> bool{
         self.width > other.width && self.length > other.length
     }
 
     // 定义关联函数(类似于静态函数)
-    fn square(size :u32) ->Rectangle{
+    fn square(size :u32) -> Rectangle{
         Rectangle{
             width:size,
             length:size,
