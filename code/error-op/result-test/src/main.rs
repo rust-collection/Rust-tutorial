@@ -10,7 +10,7 @@ fn read_username_from_file(path:&str) -> Result<String, io::Error>{
     // };
     // 下面这段代码通过？的形式来将错误传递，等同于上面注释的代码
     let f = File::open(path)?;
-
+ 
     let mut s = String::new();
     // match f.read_to_string(&mut s){
     //     Ok(_)=>Ok(s),
@@ -23,12 +23,13 @@ fn read_username_from_file(path:&str) -> Result<String, io::Error>{
 }
 
 fn main() {
+    // 返回Result
     let f = File::open("hello.txt");
 
     // 调用unwarp方法如果成功返回file，错误调用err
-    let f = File::open("hello.txt").unwrap();
+    // let f = File::open("hello.txt").unwrap();
     // 与unwarp类似但是错误消息可自定义
-    let f = File::open("hello.txt").expect("cannot open the file");
+    // let f = File::open("hello.txt").expect("cannot open the file");
 
     let f = match f {
         Ok(file)=>file,
@@ -41,7 +42,7 @@ fn main() {
         },
     };
 
-    // 下面的代码等同于上面的代码
+    // 下面的代码等同于上面的代码 
     let f = File::open("hello.txt").unwarp_or_else(|error|{
         if error.kind() == ErrorKind::NotFound{
             File::create("hello.txt").unwarp_or_else(|error|{
