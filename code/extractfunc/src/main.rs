@@ -1,11 +1,11 @@
 //修改为泛型
-fn largestCommon<T>(list: &[T])->T{
-    let mut largest = list[0];
+//要求T实现PartialOrd+Clone这两个trait
+fn largestCommon<T:PartialOrd+Clone>(list: &[T])->T{
+    let mut largest = list[0].clone();
     // 如果number前面不加&符号的话，得到的是i32的引用
-    for &number in list{
-        //现在会报错，需要让T实现接口
-        if number > largest{
-            largest = number
+    for number in list.iter(){
+        if number > &largest{ //实现了std::cmp::PartialOrd才可以比较
+            largest = number.clone();
         };
     };
     largest
