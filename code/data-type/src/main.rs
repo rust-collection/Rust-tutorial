@@ -1,3 +1,5 @@
+use num::complex::Complex;
+
 fn main() {
     let number: u32 = "42".parse().expect("Not a number!");
     println!("{}", number);
@@ -19,4 +21,11 @@ fn main() {
     // 相当于[3,3,3,3,3]
     let array = [3;5];
     println!("{}", array[2]);
+
+    // 使用 num 包处理复数
+    let a = Complex { re: 2.1, im: -1.2 };
+    let b = Complex::new(11.1, 22.2);
+    let result = a + b;
+
+    println!("{} + {}i", result.re, result.im)
 }
